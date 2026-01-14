@@ -1,0 +1,41 @@
+<footer class="bg-dark text-light mt-5">
+    <div class="container py-4">
+        <div class="row">
+
+            <!-- Logo / Empresa -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold">Mi Proyecto</h5>
+                <p class="small">
+                    Sistema desarrollado con Django.
+                    Soluciones simples y eficientes.
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">Enlaces</h6>
+                <ul class="list-unstyled">
+                    <li><a href="{%  url 'home' %}" class="text-light text-decoration-none">Inicio</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Nosotros</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">Contacto</h6>
+                <p class="small mb-1">📧 contacto@misitio.com</p>
+                <p class="small mb-1">📞 +57 300 000 0000</p>
+                <p class="small">📍 Colombia</p>
+            </div>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <!-- Copyright -->
+        <div class="text-center small">
+            © {% now "Y" %} Mi Proyecto | Todos los derechos reservados
+        </div>
+    </div>
+</footer>
