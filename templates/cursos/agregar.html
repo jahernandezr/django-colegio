@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form  method="post">
+    {% csrf_token %}
+
+     <div class="md-3">
+        <label for="">nombre</label>
+        <input type="text"  name="nombre" value="" required>
+     </div> 
+
+    <div class="md-3">
+        <label for="">cantidad alumnos</label>
+        <input type="number"  name="cantidad_alumnos" value="" required>
+     </div> 
+     
+     <div class="md-3">
+        <label for="">tipo curso</label>
+        <input type="text"  name="tipo_curso" value="" required>
+     </div> 
+
+     <button class=" btn btn-succes">AGREGAR</button>
+     <a href="{% url 'listas-cursos' %}">volver</a>
+     
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form  method="post">
+    {% csrf_token %}
+
+     <div class="md-3">
+        <label for="">nombre</label>
+        <input type="text"  name="nombre" value="{{ curso.nombre }}" required>
+     </div> 
+
+    <div class="md-3">
+        <label for="">cantidad alumnos</label>
+        <input type="number"  name="cantidad_alumnos" value="{{ curso.cantidad_alumnos }}" required>
+     </div> 
+     
+     <div class="md-3">
+        <label for="">tipo curso</label>
+        <input type="text"  name="tipo_curso" value="{{ curso.tipo_curso }}" required>
+     </div> 
+
+     <button class=" btn btn-succes">Modificar</button>
+     <a href="{% url 'listas-cursos' %}">volver</a>
+     
+</form>
+
+
+{% endblock %}
