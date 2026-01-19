@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from . models  import cursos
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def litasdecursos(request):
     curso_lista= cursos.objects.all()
     data= {
