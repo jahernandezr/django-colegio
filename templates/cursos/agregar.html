@@ -3,12 +3,19 @@
 {% block content %}
 
 
+
 <form  method="post">
     {% csrf_token %}
 
      <div class="md-3">
         <label for="">nombre</label>
-        <input type="text"  name="nombre" value="" required>
+      
+        <select name="nombre" id="nombre" required> 
+         {% for d in datlist %}
+             <option value="{{ d.curso }}">{{ d.curso }}</option>
+         {% endfor %}
+    
+        </select>
      </div> 
 
     <div class="md-3">
@@ -17,8 +24,15 @@
      </div> 
      
      <div class="md-3">
-        <label for="">tipo curso</label>
-        <input type="text"  name="tipo_curso" value="" required>
+        <label for="">Jornada</label>
+        {% if listjornada %}
+        <select  name="tipo_curso"  required>
+         <option selected>seleccione</option>
+         {% for l in listjornada %}
+         <option value="{{l.jornada}}">{{l.jornada}}</option>
+         {% endfor %}
+        </select>
+        {% endif %}
      </div> 
 
      <button class=" btn btn-succes">AGREGAR</button>

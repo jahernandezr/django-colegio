@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from . models  import cursos
+from cursos.models import tipo_cursos,tipo_jornada
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -13,9 +14,9 @@ def litasdecursos(request):
 def editarcursos(request,id):
     curso = get_object_or_404(cursos, id=id)
     data ={
-        'curso' :curso
+        'curso' :curso,
     }
-        
+              
     if request.method == 'POST':
         curso.nombre = request.POST['nombre']
         curso.cantidad_alumnos = request.POST['cantidad_alumnos']
@@ -32,13 +33,16 @@ def deletecurso(request, id):
     return redirect('listas-cursos')
 
 def agregarcursos(request):
+    datlist = tipo_cursos.objects.all()
+    listjornada = tipo_jornada.objects.all()
+        
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
         cantidad = request.POST.get('cantidad_alumnos')
         tipo = request.POST.get('tipo_curso')
-
         if not nombre or not cantidad or not tipo:
-            return render(request, 'cursos/agregar.html',{'error :' : 'Digitar todos los campos'})
+            
+            return render(request, 'cursos/agregar.html',{'datlist': datlist,'listjornada' :listjornada,'error :' : 'Digitar todos los campos'})
         
         cursos.objects.create(
             nombre = nombre,
@@ -47,6 +51,6 @@ def agregarcursos(request):
         )
 
         return redirect('listas-cursos')
-    return render(request , 'cursos/agregar.html' )
+    return render(request , 'cursos/agregar.html',{'datlist': datlist,'listjornada' :listjornada   } )
 
         
